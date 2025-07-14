@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Économique de l'Île</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-sidebar" onclick="toggleSidebar()">+</button>
+            <h2>Paramètres</h2>
+            <label><input type="checkbox" id="modeToggle" onchange="toggleMode()"> Mode Avancé</label>
+            <div id="sliders-normal">
+                <label>Poissons initiaux: <span id="poissons-value">100</span></label>
+                <input type="range" id="poissons" min="50" max="200" value="100" oninput="updateSlider('poissons')">
+                <label>Humains: <span id="humains-value">2</span></label>
+                <input type="range" id="humains" min="1" max="5" value="2" oninput="updateSlider('humains')">
+                <label>Taxe (%): <span id="taxe-value">10</span></label>
+                <input type="range" id="taxe" min="0" max="20" value="10" oninput="updateSlider('taxe')">
+            </div>
+            <div id="sliders-avance" style="display: none;">
+                <label>Coût filet: <span id="cout-filet-value">20</span></label>
+                <input type="range" id="cout-filet" min="10" max="50" value="20" oninput="updateSlider('cout-filet')">
+                <label>Délai centrale (ans): <span id="delai-centrale-value">10</span></label>
+                <input type="range" id="delai-centrale" min="5" max="15" value="10" oninput="updateSlider('delai-centrale')">
+                <label>Publicité outil (%): <span id="publicite-value">20</span></label>
+                <input type="range" id="publicite" min="0" max="50" value="20" oninput="updateSlider('publicite')">
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="canvas-container"></div>
+            <div class="plots" id="plots">
+                <div id="pib-plot"></div>
+                <div id="satisfaction-plot"></div>
+                <div id="valeur-nette-plot"></div>
+            </div>
+        </div>
+    </div>
+    <script src="sketch.js"></script>
+</body>
+</html>
